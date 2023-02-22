@@ -1,115 +1,206 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from "../styles/pageone.module.css";
+import React, { useEffect, useState } from "react";
+import { useRef } from "react";
 
 export default function Home() {
+  const Ref = useRef(null);
+  const [Wishes, setWishes] = useState([]);
+  const [wish, setWish] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem('Wishes', JSON.stringify(Wishes));
+  }, [Wishes]);
+  const listItems = Wishes.map((wsh) => <li key={wsh.toString()}> {wsh}</li>);
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Ref.current.value == ""
+      ? setWishes(Wishes)
+      : setWishes((Wishes) => [...Wishes, Ref.current.value]);
+
+    setWish("");
+  };
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <>
+      <div>
+        <div>
+          <header className={styles.header}>
+            <div className={styles.containerh}>
+              <div className={styles.containerhc}>
+                <div className={styles.item1}>
+                  <a href="https://example.com">Travelme</a>
+                </div>
+                <div className={styles.item2}>
+                  <a href="https://example.com">Tours</a>
+                  <div></div>
+                  <a href="https://example.com">Book a Trip</a>
+                  <div></div>
+                  <a href="https://example.com">Ask for Guide</a>
+                  <div></div>
+                  <a href="https://example.com">History</a>
+                  <div></div>
+                  <a href="https://example.com">Reviews</a>
+                  <div></div>
+                  <button>SignUp</button>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div className={styles.bigcont}>
+            <div className={styles.cont}>
+              <div className={styles.textcont}>
+                <h1>Welcome to Travelme </h1>
+                <span>
+                  The number one destination guide for touriest all around the
+                  world
+                </span>
+                <h5>Join us now</h5>
+                <button>Join</button>
+              </div>
+              <div className={styles.imgcont}>
+                <div>
+                  <img
+                    src="https://thepointsguy.global.ssl.fastly.net/us/originals/2021/04/TPG-App-Feature.jpg?width=1920"
+                    alt="Logo"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className={styles.seccont}>
+          <h1>Why join Us ?</h1>
+          <div className={styles.bigcont}>
+            <div className={styles.cont}>
+              <div className={styles.imgcont} style={{ alignItems: "center" }}>
+                <div>
+                  <img
+                    src="http://thepakistanitraveller.assamartist.com/wp-content/uploads/2019/11/new-lahore-tourist-attraction-map-assam-artist-highresolution.jpg"
+                    alt="Logo"
+                  />
+                </div>
+              </div>
+              <div className={styles.textcont}>
+                <h4>The benifits that it yields </h4>
+                <span style={{ fontSize: "18px" }}>
+                  there are alot of djaspfjsd;vjsdf;aj;a jdfk asd;kf svnsf;anjsd
+                  hakl dhflashfkljasdhfjk asdf nasdlncjasdfln adl
+                  dasjfsdlajgfasdlkjgfajkl sdgfkl jsdgjkbsfkajfnad;f;asd
+                  hfasdkl; fhasdklgnf; lsfgl;ak sl;gkn asjdfldasn
+                </span>
+                <div style={{ height: "25px" }}></div>
+                <span style={{ fontSize: "18px" }}>
+                  there are alot of djaspfjsd;vjsdf;aj;a jdfk asd;kf svnsf;anjsd
+                  hakl dhflashfkljasdhfjk asdf nasdlncjasdfln adl
+                  dasjfsdlajgfasdlkjgfajkl sdgfkl jsdgjkbsfkajfnad;f;asd
+                  hfasdkl; fhasdklgnf; lsfgl;ak sl;gkn asjdfldasn
+                </span>
+                <button>Join</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={styles.seccont}
+          style={{ backgroundColor: "transparent", paddingTop: "90px" }}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-        }
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
-  )
+          <h1>Tell Us Where You Would Like To Go</h1>
+          <div className={styles.bigcont} style={{ overflow: "auto" }}>
+            <div className={styles.cont2} style={{ padding: "40px" }}>
+              <form onSubmit={handleSubmit} style={{ display: "flex" ,position:"sticky", top:"0px"}}>
+                <input 
+                  className={styles.form}
+                  placeholder="Wishes"
+                  onChange={(e) => setWish(e.target.value)}
+                  value={wish}
+                  ref={Ref}
+                ></input>
+                <div style={{ width: "20px" }}></div>
+                <button
+                  style={{
+                    width: "80px",
+                    height: "45px",
+                    padding: "0px",
+                    fontSize: "18px",
+                  }}
+                  type="submit"
+                >
+                  Wish
+                </button>
+              </form>
+              <div>
+                <ul>{listItems}</ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer className={styles.footer}>
+          <div style={{ backgroundColor: "black" }}>
+            <div className={styles.footflex}>
+              <div>
+                <h3>Services</h3>
+                <ul>
+                  <li>
+                    <a href="#">Travel</a>
+                  </li>
+                  <li>
+                    <a href="#">Tours</a>
+                  </li>
+                  <li>
+                    <a href="#">Hosting</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3>About</h3>
+                <ul>
+                  <li>
+                    <a href="#">Company</a>
+                  </li>
+                  <li>
+                    <a href="#">Team</a>
+                  </li>
+                  <li>
+                    <a href="#">Legacy</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3>Careers</h3>
+                <ul>
+                  <li>
+                    <a href="#">Job openings</a>
+                  </li>
+                  <li>
+                    <a href="#">Employees</a>
+                  </li>
+                  <li>
+                    <a href="#">Benefits</a>
+                  </li>
+                </ul>
+              </div>
+              <div style={{ margin: "auto" }}>
+                <a href="#">
+                  <i></i>
+                </a>
+                <a href="#">
+                  <i></i>
+                </a>
+                <a href="#">
+                  <i></i>
+                </a>
+                <a href="#">
+                  <i></i>
+                </a>
+                <p>Travelme © 2023</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </>
+  );
 }
