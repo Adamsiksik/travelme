@@ -6,6 +6,19 @@ export default function Home() {
   const Ref = useRef(null);
   const [Wishes, setWishes] = useState([]);
   const [wish, setWish] = useState("");
+  const [curImg, setCurImg] = useState(0);
+
+  // let imgs=["https://thepointsguy.global.ssl.fastly.net/us/originals/2021/04/TPG-App-Feature.jpg?width=1920","https://www.jetss.com/wp-content/uploads/2021/04/Must-Have-Features-in-a-Travel-App.jpg"]
+  // useEffect(() => {
+    
+  //   const timeout = setTimeout(() => {
+  //     curImg<imgs.length-1? setCurImg(curImg + 1):setCurImg(0);      
+  //   }, 1500);
+
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  // }, [curImg])
 
   useEffect(() => {
     localStorage.setItem('Wishes', JSON.stringify(Wishes));
@@ -59,10 +72,16 @@ export default function Home() {
                 <h5>Join us now</h5>
                 <button>Join</button>
               </div>
+              
               <div className={styles.imgcont}>
-                <div>
-                  <img
+                <div className={styles.cf}>
+                  
+                  <img className={styles.bottom}
                     src="https://thepointsguy.global.ssl.fastly.net/us/originals/2021/04/TPG-App-Feature.jpg?width=1920"
+                    alt="Logo"
+                  />
+                  <img className={styles.top}
+                    src="https://www.jetss.com/wp-content/uploads/2021/04/Must-Have-Features-in-a-Travel-App.jpg"
                     alt="Logo"
                   />
                 </div>
