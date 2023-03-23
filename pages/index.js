@@ -6,13 +6,14 @@ export default function Home() {
   const Ref = useRef(null);
   const [Wishes, setWishes] = useState([]);
   const [wish, setWish] = useState("");
-  const [curImg, setCurImg] = useState(0);
+
+  // const [curImg, setCurImg] = useState(0);
 
   // let imgs=["https://thepointsguy.global.ssl.fastly.net/us/originals/2021/04/TPG-App-Feature.jpg?width=1920","https://www.jetss.com/wp-content/uploads/2021/04/Must-Have-Features-in-a-Travel-App.jpg"]
   // useEffect(() => {
-    
+
   //   const timeout = setTimeout(() => {
-  //     curImg<imgs.length-1? setCurImg(curImg + 1):setCurImg(0);      
+  //     curImg<imgs.length-1? setCurImg(curImg + 1):setCurImg(0);
   //   }, 1500);
 
   //   return () => {
@@ -21,11 +22,9 @@ export default function Home() {
   // }, [curImg])
 
   useEffect(() => {
-    localStorage.setItem('Wishes', JSON.stringify(Wishes));
+    localStorage.setItem("Wishes", JSON.stringify(Wishes));
   }, [Wishes]);
   const listItems = Wishes.map((wsh) => <li key={wsh.toString()}> {wsh}</li>);
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +55,9 @@ export default function Home() {
                   <div></div>
                   <a href="https://example.com">Reviews</a>
                   <div></div>
-                  <button>SignUp</button>
+                  <a href="/login">
+                    <button>Login</button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -72,15 +73,16 @@ export default function Home() {
                 <h5>Join us now</h5>
                 <button>Join</button>
               </div>
-              
+
               <div className={styles.imgcont}>
                 <div className={styles.cf}>
-                  
-                  <img className={styles.bottom}
+                  <img
+                    className={styles.bottom}
                     src="https://thepointsguy.global.ssl.fastly.net/us/originals/2021/04/TPG-App-Feature.jpg?width=1920"
                     alt="Logo"
                   />
-                  <img className={styles.top}
+                  <img
+                    className={styles.top}
                     src="https://www.jetss.com/wp-content/uploads/2021/04/Must-Have-Features-in-a-Travel-App.jpg"
                     alt="Logo"
                   />
@@ -129,8 +131,11 @@ export default function Home() {
           <h1>Tell Us Where You Would Like To Go</h1>
           <div className={styles.bigcont} style={{ overflow: "auto" }}>
             <div className={styles.cont2} style={{ padding: "40px" }}>
-              <form onSubmit={handleSubmit} style={{ display: "flex" ,position:"sticky", top:"0px"}}>
-                <input 
+              <form
+                onSubmit={handleSubmit}
+                style={{ display: "flex", position: "sticky", top: "0px" }}
+              >
+                <input
                   className={styles.form}
                   placeholder="Wishes"
                   onChange={(e) => setWish(e.target.value)}
